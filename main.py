@@ -24,12 +24,15 @@ from oauth2client.client import FlowExchangeError
 from oauth2client.client import flow_from_clientsecrets
 from oauth2client.client import AccessTokenCredentials
 
+import os
+here = os.path.dirname(__file__)
+
 # application configuration
 app = Flask(__name__)
 app.secret_key = 'itsasecret'
 
 # google client secret json
-secret_file = json.loads(open('client_secret.json', 'r').read())
+secret_file = json.loads(open(os.path.join(here, 'client_secret.json'), 'r').read())
 CLIENT_ID = secret_file['web']['client_id']
 # app name
 APPLICATION_NAME = 'Item-Catalog'
